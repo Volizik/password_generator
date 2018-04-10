@@ -1,0 +1,33 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start center">
+    <mat-card  style="max-width: 600px; width: 100%; margin-top: 30px;">
+        <mat-card-content fxLayout="column">
+            <h2>Checkbox configuration</h2>
+
+            <section fxLayout="column" fxLayoutGap="10px">
+                <mat-checkbox [(ngModel)]="numbers">0-9 (цифры)</mat-checkbox>
+                <mat-checkbox [(ngModel)]="lowerCase">a-z (буквы)</mat-checkbox>
+                <mat-checkbox [(ngModel)]="upperCase">A-Z (буквы в верхнем регистре)</mat-checkbox>
+                <mat-checkbox [(ngModel)]="symbols">Символы</mat-checkbox>
+                <mat-form-field>
+                    <input matInput placeholder="Длинна требуемого пароля" type="number" [(ngModel)]="passLength" required />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Количество паролей" type="number" [(ngModel)]="passAmount" required />
+                </mat-form-field>
+            </section>
+
+            <button fxFlexOffset="10px" mat-raised-button color="primary" (click)="showPass()">Сгенерировать парол{{passAmount>1 ? 'и' : 'ь'}}</button>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card style="max-width: 600px; width: 100%; margin-top: 30px;" *ngIf="passArr.length > 0">
+        <mat-card-content fxLayout="column">
+            <h2>Your password {{passArr.length > 1 ? '\'s': ''}}</h2>
+
+            <mat-card style="margin-bottom: 20px" *ngFor="let item of passArr">
+                <mat-card-content style="word-break: break-all;">{{ item }}</mat-card-content>
+            </mat-card>
+
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,50 @@
+<mat-card class="card">
+  <mat-card-content fxLayout="column">
+
+    <h2>Настройки генерируемого пароля</h2>
+
+    <section fxLayout="column" fxLayoutGap="10px">
+      <mat-checkbox [(ngModel)]="numbers">0-9 (цифры)</mat-checkbox>
+      <mat-checkbox [(ngModel)]="lowerCase">a-z (буквы)</mat-checkbox>
+      <mat-checkbox [(ngModel)]="upperCase">A-Z (буквы в верхнем регистре)</mat-checkbox>
+      <mat-checkbox [(ngModel)]="symbols">Символы</mat-checkbox>
+      <mat-form-field>
+        <input matInput
+               placeholder="Длинна требуемого пароля"
+               type="number"
+               [(ngModel)]="passLength"
+               required
+               #passLengthInput="ngModel"
+               name="passLengthInput" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="Количество паролей"
+               type="number"
+               [(ngModel)]="passAmount"
+               required
+               #passAmountInput="ngModel"
+               name="passAmountInput" />
+      </mat-form-field>
+    </section>
+
+    <button
+            [disabled]="passAmountInput.invalid || passLengthInput.invalid || (!numbers && !lowerCase && !upperCase && !symbols)"
+            fxFlexOffset="10px"
+            mat-raised-button
+            color="primary"
+            (click)="showPass()"
+    >Сгенерировать парол{{passAmount>1 ? 'и' : 'ь'}}</button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card" *ngIf="passArr.length > 0">
+  <mat-card-content fxLayout="column">
+    <h2>Сгенерированны{{passArr.length > 1 ? 'е': 'й'}} парол{{passArr.length > 1 ? 'и': 'ь'}}</h2>
+
+    <mat-card style="margin-bottom: 20px" *ngFor="let item of passArr">
+      <mat-card-content style="word-break: break-all;">{{ item }}</mat-card-content>
+    </mat-card>
+
+  </mat-card-content>
+</mat-card>

@@ -6,11 +6,17 @@ import {AppComponent} from './app.component';
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ClipboardModule } from 'ngx-clipboard';
+import { PassGeneratorComponent } from './components/pass-generator/pass-generator.component';
+import { TextGeneratorComponent } from './components/text-generator/text-generator.component';
+import {TextService} from './text.service';
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        PassGeneratorComponent,
+        TextGeneratorComponent
     ],
     imports: [
         BrowserModule,
@@ -18,9 +24,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         FormsModule,
         ReactiveFormsModule,
         MaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        ClipboardModule
     ],
-    providers: [],
+    providers: [TextService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

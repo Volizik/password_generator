@@ -1,0 +1,47 @@
+<mat-card class="card">
+  <mat-card-content fxLayout="column">
+
+    <h2>Настройки генерируемого текста</h2>
+
+    <section fxLayout="column" fxLayoutGap="10px">
+      <mat-form-field>
+        <input matInput
+               placeholder="Количество слов"
+               type="number"
+               [(ngModel)]="textLength"
+               required
+               #textLengthInput="ngModel"
+               name="textLengthInput" />
+      </mat-form-field>
+    </section>
+
+    <button
+            [disabled]="textLengthInput.invalid"
+            fxFlexOffset="10px"
+            mat-raised-button
+            color="primary"
+            (click)="showText()"
+    >Сгенерировать текст</button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card" *ngIf="text.length > 0">
+  <mat-card-content fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <h2>Сгенерированный текст</h2>
+      <button
+              mat-icon-button
+              color="primary"
+              ngxClipboard
+              [cbContent]="upperCase ? (text | uppercase) : text"
+              matTooltip="Copy"
+      >
+        <i class="material-icons">content_copy</i>
+      </button>
+    </div>
+
+    <mat-checkbox [(ngModel)]="upperCase">Буквы в верхнем регистре</mat-checkbox>
+    <p>{{ upperCase ? (text | uppercase) : text }}</p>
+  </mat-card-content>
+</mat-card>
+

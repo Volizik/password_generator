@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PassGeneratorComponent implements OnInit {
     passArr: Array<any> = [];
-    passLength: number;
+    passLength = 8;
     passAmount = 1;
     numbers = true;
     lowerCase = false;

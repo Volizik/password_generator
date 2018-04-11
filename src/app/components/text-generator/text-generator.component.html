@@ -11,7 +11,9 @@
                [(ngModel)]="textLength"
                required
                #textLengthInput="ngModel"
-               name="textLengthInput" />
+               name="textLengthInput"
+               pattern="[0-9]{1,6}"
+        />
       </mat-form-field>
     </section>
 

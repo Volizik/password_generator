@@ -15,7 +15,9 @@
                [(ngModel)]="passLength"
                required
                #passLengthInput="ngModel"
-               name="passLengthInput" />
+               name="passLengthInput"
+               pattern="[0-9]{1,4}"
+        />
       </mat-form-field>
       <mat-form-field>
         <input matInput
@@ -24,7 +26,9 @@
                [(ngModel)]="passAmount"
                required
                #passAmountInput="ngModel"
-               name="passAmountInput" />
+               name="passAmountInput"
+               pattern="[0-9]{1,4}"
+        />
       </mat-form-field>
     </section>
 
